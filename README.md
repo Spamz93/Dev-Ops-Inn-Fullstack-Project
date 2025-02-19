@@ -8,7 +8,6 @@ The DevOps Inn is a full-stack hotel booking web application designed to showcas
 
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Folder Structure](#folder-structure)
 - [Setup Instructions](#setup-instructions)
   - [Backend Setup](#backend-setup)
   - [Frontend Setup](#frontend-setup)
@@ -40,43 +39,6 @@ The DevOps Inn is a full-stack hotel booking web application designed to showcas
 - **TypeScript**
 - **CORS** (to handle cross-origin requests)
 
-## Folder Structure
-
-devops-inn-fullstack/
-├── backend/
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── src/
-│       ├── index.ts           # Express server entry point
-│       └── routes/
-│           └── rooms.ts       # API endpoint for room data
-├── frontend/
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── vite.config.ts
-│   ├── index.html
-│   └── src/
-│       ├── components/
-|       |   ├── Navbar
-│       │      ├── Navbar.tsx
-│       │   ├── RootLayout
-|       |      ├── RootLayout.tsx
-│       ├── pages/
-|       |      ├── Contact
-|       |          ├── Contact.tsx
-│       │      ├── Home
-|       |          ├── Home.tsx
-|       |      ├── Rooms
-|                ├── Rooms.tsx
-|              ├── Login
-|                  ├── Login.tsx
-|              ├── ErrorPage
-|                  ├── ErrorPage.tsx
-│       ├── App.tsx            # Routing configuration
-│       ├── main.tsx           # React entry point
-│       ├── theme.ts           # Custom MUI theme (optional)
-│       └── index.css
-└── README.md
 
 **Setup Instructions**
 
