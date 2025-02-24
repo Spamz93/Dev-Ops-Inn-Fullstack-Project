@@ -1,4 +1,3 @@
-// src/components/Navbar.tsx
 import React, { useState, useEffect } from 'react';
 import {
   AppBar,
@@ -19,7 +18,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link, useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode"
 
-// Define the expected shape of the decoded token
 interface DecodedToken {
   userId: string;
   name: string;
@@ -108,7 +106,6 @@ const Navbar: React.FC = () => {
     <>
       <AppBar position="fixed" color="primary">
         <Toolbar>
-          {/*hamburger menu */}
           <IconButton
             color="inherit"
             edge="start"
@@ -117,15 +114,11 @@ const Navbar: React.FC = () => {
           >
             <MenuIcon />
           </IconButton>
-
-          {/* Logo */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
               The DevOps Inn
             </Link>
           </Typography>
-
-          {/* Desktop navigation - inline nav items */}
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             <Button color="inherit" component={Link} to="/">
               Home

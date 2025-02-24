@@ -1,4 +1,3 @@
-// src/pages/RoomDetail.tsx
 import React from 'react';
 import { Container, Typography, Card, CardMedia, CardContent, Button } from '@mui/material';
 import { useLoaderData, Link } from 'react-router-dom';
