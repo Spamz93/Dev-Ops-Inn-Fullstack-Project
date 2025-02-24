@@ -8,21 +8,28 @@ const rooms = [
     name: 'Deluxe Suite',
     description: 'A spacious suite with a sea view.',
     price: 250,
-    imageUrl: '/assets/room1.jpg'
+    imageUrl: '/Deluxe Suite.webp'
   },
   {
     id: '2',
     name: 'Standard Room',
     description: 'A cozy room for solo travelers or couples.',
     price: 120,
-    imageUrl: '/assets/room2.jpg'
+    imageUrl: '/double room.webp'
   },
   {
     id: '3',
     name: 'Family Room',
     description: 'A larger room with extra beds for families.',
     price: 180,
-    imageUrl: '/assets/room3.jpg'
+    imageUrl: '/family room.webp'
+  },
+  {
+    id: '4',
+    name: 'Deluxe Suite Pro',
+    description: 'A deluxe suite with a sea view and your own jacuzzi',
+    price: 300,
+    imageUrl: '/jacuzzi.webp'
   }
 ];
 
