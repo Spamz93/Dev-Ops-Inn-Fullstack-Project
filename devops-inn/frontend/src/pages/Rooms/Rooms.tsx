@@ -4,7 +4,7 @@ import RoomCard, { Room } from '../../components/RoomCard/RoomCard';
 import { useLoaderData } from 'react-router-dom';
 
 const RoomsPage: React.FC = () => {
-  // useLoaderData returnс the data loaded by roomsLoader
+  // useLoaderData returns the data loaded by roomsLoader
   const rooms = useLoaderData() as Room[];
 
   return (

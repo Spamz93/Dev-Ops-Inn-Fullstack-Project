@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// src/components/Navbar.tsx
+import React, { useState, useContext } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -16,34 +17,13 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, useNavigate } from 'react-router-dom';
-import { jwtDecode } from "jwt-decode"
-
-interface DecodedToken {
-  userId: string;
-  name: string;
-  email: string;
-  exp: number;
-  iat: number;
-}
+import { AuthContext } from '../../context/AuthContext.tsx';
 
 const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [user, setUser] = useState<DecodedToken | null>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        const decoded: DecodedToken = jwtDecode(token);
-        setUser(decoded);
-      } catch (error) {
-        console.error('Invalid token', error);
-        localStorage.removeItem('token');
-      }
-    }
-  }, []);
+  const { user, setUser } = useContext(AuthContext);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -64,6 +44,7 @@ const Navbar: React.FC = () => {
     navigate('/');
   };
 
+  // Drawer content for mobile view
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>

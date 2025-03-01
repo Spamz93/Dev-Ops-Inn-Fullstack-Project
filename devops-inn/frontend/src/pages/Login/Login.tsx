@@ -1,10 +1,10 @@
-// src/pages/Login/AuthPage.tsx
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Container, Typography, TextField, Button, Box, Link as MuiLink } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import {jwtDecode} from 'jwt-decode';
+import { AuthContext, DecodedToken } from '../../context/AuthContext';
 
 const AuthPage: React.FC = () => {
-  // Toggle between Login and Sign Up modes.
   const [isSignUp, setIsSignUp] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -13,6 +13,7 @@ const AuthPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
 
   const toggleMode = () => {
     setIsSignUp(prev => !prev);
@@ -22,8 +23,7 @@ const AuthPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-
-    // Validate for sign up mode
+    
     if (isSignUp) {
       if (password !== confirmPassword) {
         setError('Passwords do not match.');
@@ -34,29 +34,30 @@ const AuthPage: React.FC = () => {
         return;
       }
     }
-
+    
     setLoading(true);
-
     const endpoint = isSignUp ? '/signup' : '/login';
     const payload = isSignUp 
       ? { email, password, name }
       : { email, password };
-
+    
     try {
       const response = await fetch(`http://localhost:5000/api/auth${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-
+      
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || 'Authentication failed');
       }
-
+      
       const data = await response.json();
-      // Save the token to localStorage. Future requests should use the "Bearer" token.
       localStorage.setItem('token', data.token);
+      const decoded = jwtDecode<DecodedToken>(data.token);
+      setUser(decoded);
+      
       alert(`${isSignUp ? 'Sign Up' : 'Login'} successful!`);
       navigate('/');
     } catch (err) {
