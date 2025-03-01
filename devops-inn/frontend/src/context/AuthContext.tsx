@@ -25,8 +25,6 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<DecodedToken | null>(null);
-
-  // On mount, check if token exists and decode it
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
